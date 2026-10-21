@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Умная теплица — панель управления</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <a class="brand" href="index.html"><span class="brand-icon">🌱</span><span><b>Умная теплица</b><small>IoT • Мониторинг</small></span></a>
+  <div class="side-label">РАБОЧЕЕ ПРОСТРАНСТВО</div>
+  <nav>
+    <a class="nav-link active" href="index.html"><span>▦</span> Обзор</a>
+    <a class="nav-link" href="zones.html"><span>♧</span> Зоны теплицы</a>
+    <a class="nav-link" href="sensors.html"><span>⌁</span> Датчики</a>
+    <a class="nav-link" href="control.html"><span>⏻</span> Управление</a>
+    <a class="nav-link" href="alerts.html"><span>⚑</span> Оповещения <i id="navAlertCount">0</i></a>
+    <a class="nav-link" href="analytics.html"><span>▥</span> Аналитика</a>
+    <a class="nav-link" href="settings.html"><span>⚙</span> Настройки</a>
+  </nav>
+  <div class="sidebar-bottom"><div class="online-dot"></div><div><b>Симулятор активен</b><small>Учебные данные</small></div></div>
+</aside>
+<main class="main">
+<header class="topbar"><div><div class="eyebrow">ПАНЕЛЬ МОНИТОРИНГА</div><h1>Обзор теплицы</h1></div><div class="top-actions"><span class="live"><i></i> Обновление данных</span><button class="icon-btn" id="refreshBtn" title="Обновить">↻</button><div class="avatar">УТ</div></div></header>
+<section class="welcome"><div><span class="pill">● СИСТЕМА В СЕТИ</span><h2>Добро пожаловать в умную теплицу</h2><p>Следите за микроклиматом, состоянием растений и работой оборудования в одном месте.</p></div><div class="welcome-plant">🌿</div></section>
+<section class="kpis">
+  <article class="kpi"><div class="kpi-top"><span>Температура</span><span class="kpi-icon orange">♨</span></div><strong id="temperatureKpi">24.8<span>°C</span></strong><small class="positive">● В допустимом диапазоне</small></article>
+  <article class="kpi"><div class="kpi-top"><span>Влажность воздуха</span><span class="kpi-icon blue">≈</span></div><strong id="humidityKpi">67<span>%</span></strong><small class="positive">● Датчик в сети</small></article>
+  <article class="kpi"><div class="kpi-top"><span>Влажность почвы</span><span class="kpi-icon green">♧</span></div><strong id="soilKpi">42<span>%</span></strong><small id="soilStatus" class="positive">● Достаточно влаги</small></article>
+  <article class="kpi"><div class="kpi-top"><span>Вода в баке</span><span class="kpi-icon violet">▤</span></div><strong id="waterKpi">72<span>%</span></strong><div class="mini-progress"><span id="waterBar"></span></div><small>Уровень резервуара</small></article>
+</section>
+<section class="content-grid">
+ <article class="panel chart-panel"><div class="panel-heading"><div><h3>Динамика температуры</h3><p>Изменение показаний за последнее время</p></div><span class="chart-badge">● В реальном времени*</span></div><div class="chart-wrap"><canvas id="temperatureChart"></canvas></div><small class="muted">*Данные генерируются симулятором, реальные датчики не подключены.</small></article>
+ <article class="panel"><div class="panel-heading"><div><h3>Состояние системы</h3><p>Оборудование теплицы</p></div><span class="tiny-status">АКТИВНО</span></div><div id="deviceSummary" class="device-list"></div><a class="panel-link" href="control.html">Перейти к управлению <span>→</span></a></article>
+</section>
+<section class="content-grid lower-grid">
+ <article class="panel"><div class="panel-heading"><div><h3>Зоны выращивания</h3><p>Текущие показатели по секторам</p></div><a class="text-link" href="zones.html">Все зоны →</a></div><div id="zonePreview" class="zone-preview"></div></article>
+ <article class="panel"><div class="panel-heading"><div><h3>Последние оповещения</h3><p>События, требующие внимания</p></div><a class="text-link" href="alerts.html">Все →</a></div><div id="alertPreview" class="alert-list"></div></article>
+</section>
+<footer>IoT Smart Greenhouse · Учебный проект · Показания являются симуляцией</footer>
+</main></div>
+<script src="assets/js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded',()=>Greenhouse.renderDashboard());</script>
+</body></html>
